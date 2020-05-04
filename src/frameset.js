@@ -109,6 +109,7 @@ class FrameSet {
   get frange() { return this._frange }
   get items() { return this._items }
   get order() { return this._order }
+  get frames() { return this._order }
 
   index(frame) {
     return this._order.indexOf(frame);
