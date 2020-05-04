@@ -9,7 +9,7 @@ Based on the python "fileseq" library: https://github.com/justinfx/fileseq
 ```bash
 npm i fileseq
 # OR
-yarn install fileseq
+yarn add fileseq
 ```
 
 ## Import
@@ -72,17 +72,17 @@ var seq = new fileseq.FileSequence("/foo/bar.1-10#.exr");
 
 ### Format Path for VFX Software
 
-#### Using FileSequence.format Method:
+#### Using FileSequence.format Method (the python way):
 ```javascript
-var seq = fileseq.FileSequence("/foo/bar.1-10#.exr");
+var seq = new fileseq.FileSequence("/foo/bar.1-10#.exr");
 seq.format('{dirname}{basename}{padding}{extension}');
 // "/foo/bar.#.exr"
 ```
 
 #### Joining:
 ```javascript
-var seq = fileseq.FileSequence("/foo/bar.1-10#.exr");
-''.join([seq.dirname, seq.basename, '%0', seq.end().toString().length, seq.extension]);
+var seq = new fileseq.FileSequence("/foo/bar.1-10#.exr");
+`${seq.dirname}${seq.basename}%0${seq.end().toString().length}d${seq.extension}`;
 // "/foo/bar.%02d.exr"
 ```
 
