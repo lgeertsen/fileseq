@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const format = require('string-format');
 
 const constants = require('./constants');
 const utils = require('./utils');
@@ -14,6 +15,10 @@ module.exports = class FileSequence {
       try {
         var split = constants.SPLIT_PATTERN[Symbol.split](sequence);
         var pathParse = path.parse(split[0]);
+        var sep = path.sep;
+        if(!pathParse.dir.endsWith(sep)) {
+          pathParse.dir += sep;
+        }
         this._dir = pathParse.dir;
         this._base = pathParse.base;
         this._frameSet = new FrameSet(split[1])
@@ -25,14 +30,12 @@ module.exports = class FileSequence {
     }
   }
 
-  format() {
-    // TODO: FileSequence format
-    return "";
-    // return `${this._base}${this._}`;
+  format(template="{basename}{frameRange}{padding}{extension}") {
+    return format(template, this);
   }
 
-  get dirName() { return this._dir }
-  set dirName(dir) {
+  get dirname() { return this._dir }
+  set dirname(dir) {
     var sep = path.sep;
     if(!dir.endsWith(sep)) {
       dir += sep;
@@ -40,8 +43,8 @@ module.exports = class FileSequence {
     this._dir = dir;
   }
 
-  get baseName() { return this._base }
-  set baseName(base) { this._base = base }
+  get basename() { return this._base }
+  set basename(base) { this._base = base }
 
   get padding() { return this._pad }
   set padding(pad) { this._pad = pad } // TODO: complete function with zfill
