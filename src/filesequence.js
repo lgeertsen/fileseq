@@ -25,6 +25,47 @@ module.exports = class FileSequence {
     }
   }
 
+  format() {
+    // TODO: FileSequence format
+    return "";
+    // return `${this._base}${this._}`;
+  }
+
+  get dirName() { return this._dir }
+  set dirName(dir) {
+    var sep = path.sep;
+    if(!dir.endsWith(sep)) {
+      dir += sep;
+    }
+    this._dir = dir;
+  }
+
+  get baseName() { return this._base }
+  set baseName(base) { this._base = base }
+
+  get padding() { return this._pad }
+  set padding(pad) { this._pad = pad } // TODO: complete function with zfill
+
+  get frameSet() { return this._frameSet }
+  set frameSet(frameSet) { this._frameSet = frameSet }
+
+  get extension() { return this._ext }
+  set extension(ext) {
+    if(ext[0] != ".") {
+      ext = "." + ext;
+    }
+    this._ext = ext;
+  }
+
+  get frameRange() {
+    if(!this._frameSet) {
+      return "";
+    }
+    return this._frameSet.frameRange(this._zfill); // TODO: framerange fct
+  }
+
+  set frameRange(frange) { this.frameSet = new FrameSet(frange) }
+
   static yieldSequencesInList(paths, usingTemplate=false) {
     var seqs = {}
 
