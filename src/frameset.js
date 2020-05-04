@@ -83,7 +83,7 @@ class FrameSet {
           items.add(frames[f]);
         }
       } else {
-        var allFrames = xfrange(start, end, start < and ? 1 : -1, maxSize);
+        var allFrames = utils.xfrange(start, end, start < end ? 1 : -1, maxSize);
         var frames = [];
         for(var f = 0; f < allFrames.length; f++) {
           if(!items.has(allFrames[f])) {
@@ -99,7 +99,7 @@ class FrameSet {
     }
 
     this._items = items;
-    this.order = order;
+    this._order = order;
   }
 
   is_null() {
