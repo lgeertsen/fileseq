@@ -1,7 +1,7 @@
 {
   "name": "fileseq",
   "description": "A library for parsing frame ranges and file sequences commonly used in VFX and Animation applications.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Lee Geertsen <lgeertsen@artfx.fr>",
   "main": "src/index.js",
   "scripts": {
