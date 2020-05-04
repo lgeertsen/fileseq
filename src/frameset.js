@@ -131,10 +131,19 @@ class FrameSet {
     return this.order[this._order.length-1];
   }
 
+  frameRange(zfill=1) {
+    return FrameSet.padFrameRange(self.frange, zfill);
+  }
+
   _maxSizeCheck(n) {
     if(n > constants.MAX_FRAME_SIZE) {
       throw `Frame size ${n} > ${constants.MAX_FRAME_SIZE} (MAX_FRAME_SIZE)`;
     }
+  }
+
+  static padFrameRange(frange, zfill) {
+    // TODO: padFrameRangeFunction
+    return ''
   }
 
   _parse_frange_part(frange) {
