@@ -132,7 +132,7 @@ class FrameSet {
   }
 
   frameRange(zfill=1) {
-    return FrameSet.padFrameRange(self.frange, zfill);
+    return FrameSet.padFrameRange(this.frange, zfill);
   }
 
   _maxSizeCheck(n) {
