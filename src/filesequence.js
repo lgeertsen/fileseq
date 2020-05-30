@@ -102,7 +102,7 @@ module.exports = class FileSequence {
       seq._base = keyValues[1] ? keyValues[1] : "";
       seq._ext = keyValues[2] ? keyValues[2] : "";
       var frames = seqs[key];
-      if(frames) {
+      if(frames && !frames.includes(undefined)) {
         seq._frameSet = new FrameSet(frames);
         var pad = frames[0].length;
         for(var i = 1; i < frames.length; i++) {
